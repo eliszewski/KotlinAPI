@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Pokémon List</title>
+</head>
+<body>
+<h1>Pokémon List</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Species</th>
+        <th>Level</th>
+        <th>Primary Type</th>
+        <th>Secondary Type</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="pokemon : ${pokemonList}">
+        <td th:text="${pokemon.id}"></td>
+        <td th:text="${pokemon.species}"></td>
+        <td th:text="${pokemon.level}"></td>
+        <td th:text="${pokemon.primaryType}"></td>
+        <td th:text="${pokemon.secondaryType}"></td>
+    </tr>
+    </tbody>
+</table>
+<button id="loadTemplateBtn">Load Template</button>
+<script>
+        document.getElementById('loadTemplateBtn').addEventListener('click', function() {
+            window.location.href = '/api/pokemon/template';
+        });
+    </script>
+</body>
+</html>

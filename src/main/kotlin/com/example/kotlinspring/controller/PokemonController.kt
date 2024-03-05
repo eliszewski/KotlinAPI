@@ -3,6 +3,7 @@ package com.example.kotlinspring.controller
 import com.example.kotlinspring.entity.Pokemon
 import com.example.kotlinspring.repository.PokemonRepository
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.*
 import java.util.*
 
@@ -16,6 +17,13 @@ class PokemonController {
     @GetMapping("/")
     fun getAllPokemon(): List<Pokemon> {
         return pokemonRepository.findAll()
+    }
+
+    @GetMapping("/template")
+    fun getPokemon(model: Model): String {
+        val pokemonList = pokemonRepository.findAll()
+        model.addAttribute("pokemonList", pokemonList)
+        return "pokemon-list"
     }
 
     @GetMapping("/{id}")

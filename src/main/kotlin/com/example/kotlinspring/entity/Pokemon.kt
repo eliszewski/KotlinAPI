@@ -13,6 +13,9 @@ data class Pokemon(
     @Column(name = "SPECIES")
     var species: String = "",
 
+    @Column(name = "NICKNAME")
+    var nickName: String = species,
+
     @Column(name = "LVL")
     var level: Int = 1,
 
@@ -23,6 +26,11 @@ data class Pokemon(
     @Enumerated(EnumType.STRING)
     @Column(name = "SECONDARY_TYPE")
     var secondaryType: Type = Type.NONE,
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "TRAINER_ID")
+    var trainer: Trainer? = null
+
 )
 
 enum class Type {
