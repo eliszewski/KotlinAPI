@@ -19,13 +19,6 @@ class PokemonController {
         return pokemonRepository.findAll()
     }
 
-    @GetMapping("/template/all")
-    fun getPokemon(model: Model): String {
-        val pokemonList = pokemonRepository.findAll()
-        model.addAttribute("pokemonList", pokemonList)
-        return "pokemon-list"
-    }
-
     @GetMapping("/{id}")
     fun getPokemonById(@PathVariable id: Long): Pokemon {
         return pokemonRepository.findById(id)

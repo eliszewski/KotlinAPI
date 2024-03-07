@@ -10,6 +10,7 @@
     <tr>
         <th>ID</th>
         <th>Species</th>
+        <th>Nickname</th>
         <th>Level</th>
         <th>Primary Type</th>
         <th>Secondary Type</th>
@@ -18,6 +19,7 @@
     <tbody>
     <tr th:each="pokemon : ${pokemonList}">
         <td th:text="${pokemon.id}"></td>
+        <td th:text="${pokemon.nickName}"></td>
         <td th:text="${pokemon.species}"></td>
         <td th:text="${pokemon.level}"></td>
         <td th:text="${pokemon.primaryType}"></td>
