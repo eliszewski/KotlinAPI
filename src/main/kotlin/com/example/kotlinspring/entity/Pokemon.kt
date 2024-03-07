@@ -1,5 +1,6 @@
 package com.example.kotlinspring.entity
 
+import com.fasterxml.jackson.annotation.JsonBackReference
 import jakarta.persistence.*
 
 @Entity
@@ -27,8 +28,9 @@ data class Pokemon(
     @Column(name = "SECONDARY_TYPE")
     var secondaryType: Type = Type.NONE,
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "TRAINER_ID")
+    @JsonBackReference
     var trainer: Trainer? = null
 
 )

@@ -1,4 +1,5 @@
 package com.example.kotlinspring.entity
+import com.fasterxml.jackson.annotation.JsonManagedReference
 import kotlin.collections.MutableList
 
 
@@ -21,7 +22,8 @@ data class Trainer(
     @Column(name = "TRAINER_CLASS")
     var trainerClass: TrainerClass = TrainerClass.UNKNOWN,
 
-    @OneToMany(mappedBy = "trainer", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "trainer", cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
+    @JsonManagedReference
     var pokemon: MutableList<Pokemon> = mutableListOf()
 
 )
